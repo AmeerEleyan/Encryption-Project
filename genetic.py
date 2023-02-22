@@ -67,6 +67,7 @@ NUM_GENERATIONS = 100
 # Define the fitness function
 def fitness(chromosome, data, vocab):
     num_shingles, num_bands = chromosome
+
     # Create shingles and bands
     shingles = LSH.shingle(data, num_shingles)
     hot_encoding = LSH.get_shingles_hot_encoding(shingles, vocab)
