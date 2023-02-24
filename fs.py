@@ -9,5 +9,7 @@ def calculate_similarity(list1, list2, b_size):
     return count / b_size
 
 
+for i in range(0, 5, 2):
+    print(i)
 
 

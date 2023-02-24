@@ -49,13 +49,13 @@ def split_vector(signature, band_size):
     return sub_vecs
 
 
-def hash_bands(band, band_size):
+def hash_bands(band, band_size, files_size):
     band_hash = []
     for i in band:
         summation = 0
         for j in i:
             summation = summation + j
-        band_hash.append((3 * summation) % band_size)  # Any linear function to generate hash for each band
+        band_hash.append((files_size * summation) % band_size)  # Any linear function to generate hash for each band
     return band_hash
 
 
@@ -67,7 +67,7 @@ def get_vocab(shingle_size, corpus, tampered_file):
     tampered_file_shingles = shingle(tampered_file, shingle_size)
     vocab = tampered_file_shingles
     for data in corpus:
-        data_shingle = shingle("".join(data), shingle_size)
+        data_shingle = shingle(data, shingle_size)
         vocab = vocab.union(data_shingle)  # generate a vocab by union all shingles together
     return vocab
 
