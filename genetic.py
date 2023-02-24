@@ -177,3 +177,4 @@ data = 'Ameer fdg dfg ert gao sdipfew feepwre fspoefn aef'
 
 threshold = 0.5
 genetic_algorithm(data, {'gj', 'uyi'})
+

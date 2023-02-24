@@ -72,12 +72,12 @@ def get_vocab(shingle_size, corpus, tampered_new_file):
     return vocab
 
 
-# def calculate_similarity(list1, list2, b_size):
-#     count = 0
-#     for b, a in zip(list1, list2):
-#         if a == b:
-#             count += 1
-#     return count / b_size
+def calculate_similarity(list1, list2, b_size):
+    count = 0
+    for b, a in zip(list1, list2):
+        if a == b:
+            count += 1
+    return count / b_size
 
 
 def jaccard_similarity(s1, s2):

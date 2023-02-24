@@ -8,12 +8,6 @@ def calculate_similarity(list1, list2, b_size):
             count = count + 1
     return count / b_size
 
-z = [1,3,4]
-r = z.index(1)
-r = z.index(3)
-r = z.index(4)
-y = 7  in z
-r = z.index(7)
 
 
 

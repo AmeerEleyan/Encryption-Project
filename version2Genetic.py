@@ -151,7 +151,6 @@ def genetic_algorithm(data, threshold):
         best_fitness = fitness(best_individual, data, threshold)
         # print(f"Generation {i + 1}: Best individual {best_individual}, fitness score {best_fitness}")
     # Print the shingle size, bands, and min hash values for the best individual
-    print("Best individual:")
     print("  Shingle size:", best_individual[0])
     print("  Bands:", best_individual[1])
     shingles = create_shingles(data, best_individual[0])
