@@ -110,7 +110,7 @@ def calculate_similarities(tampered_file, files, shingle_size, minhash_vector_si
 if __name__ == '__main__':
     no_of_corpus_files = int(input("Enter number of files for corpus: "))
 
-    no_of_files = int(input("Enter number of files: "))
+    no_of_files = int(input("Enter number of files for tampered: "))
     files = []
     for i in range(no_of_files):
         message = "Enter file ID(0-" + str(no_of_corpus_files) + ") and it percentage: "
