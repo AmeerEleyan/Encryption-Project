@@ -39,9 +39,9 @@ def create_hash(vector: list, minhash_func, vocab):
     return signature
 
 
-def split_vector(signature, b):
-    assert len(signature) % b == 0, "the number of bands is not suitable"
-    r = int(len(signature) / b)
+def split_vector(signature, band_size):
+    assert len(signature) % band_size == 0, "the number of bands is not suitable"
+    r = int(len(signature) / band_size)
     # code splitting signature in b parts
     sub_vecs = []
     for i in range(0, len(signature), r):
@@ -49,13 +49,13 @@ def split_vector(signature, b):
     return sub_vecs
 
 
-def hash_bands(band, b):
+def hash_bands(band, band_size):
     band_hash = []
     for i in band:
         summation = 0
         for j in i:
             summation = summation + j
-        band_hash.append((3 * summation) % b)  # Any linear function to generate hash for each band
+        band_hash.append((3 * summation) % band_size)  # Any linear function to generate hash for each band
     return band_hash
 
 
@@ -63,8 +63,8 @@ def get_shingles_hot_encoding(shingles, vocab):
     return [1 if x in shingles else 0 for x in vocab]
 
 
-def get_vocab(shingle_size, corpus, tampered_new_file):
-    tampered_file_shingles = shingle(tampered_new_file, shingle_size)
+def get_vocab(shingle_size, corpus, tampered_file):
+    tampered_file_shingles = shingle(tampered_file, shingle_size)
     vocab = tampered_file_shingles
     for data in corpus:
         data_shingle = shingle("".join(data), shingle_size)
@@ -80,9 +80,9 @@ def calculate_similarity(list1, list2, b_size):
     return count / b_size
 
 
-def jaccard_similarity(s1, s2):
-    s1 = set(s1)
-    s2 = set(s2)
+def jaccard_similarity(hash_band_tampered, data_corpus_hash_band):
+    s1 = set(hash_band_tampered)
+    s2 = set(data_corpus_hash_band)
     if len(s1) == 0 and len(s2) == 0:
         return 1.0
     return len(s1.intersection(s2)) / len(s1.union(s2))
